@@ -1,10 +1,9 @@
 package modelo;
 
-public class Literal implements Indicador {
+public class Literal implements Formula {
+	private Double valor;
 
-	private double valor;
-
-	public Literal(double valor) {
+	public Literal(Double valor) {
 		this.valor = valor;
 	}
 
@@ -13,4 +12,9 @@ public class Literal implements Indicador {
 		return this.valor;
 	}
 
+	@Override
+	public String formula() {
+		return valor.toString();
+	}
+	
 }

@@ -1,12 +1,9 @@
 package modelo;
 
-public class Suma implements Indicador {
-	private Indicador izquierdo;
-	private Indicador derecho;
-
-	public Suma(Indicador izquierdo, Indicador derecho) {
-		this.izquierdo = izquierdo;
-		this.derecho = derecho;
+public class Suma extends OperacionBinaria {
+	
+	public Suma(Formula izquierdo, Formula derecho) {
+		super('+', izquierdo, derecho);
 	}
 
 	@Override
@@ -15,3 +12,5 @@ public class Suma implements Indicador {
 	}
 
 }
+
+

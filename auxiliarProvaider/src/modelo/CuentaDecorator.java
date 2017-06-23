@@ -2,11 +2,11 @@ package modelo;
 
 import model.ResumenDeCuentas;
 
-public class Cuenta implements Indicador {
+public class CuentaDecorator implements Formula {
 	private ResumenDeCuentas resumen;
 	private String nombre; 
 	
-	public Cuenta(ResumenDeCuentas resumen, String nombre) {
+	public CuentaDecorator(ResumenDeCuentas resumen, String nombre) {
 		this.resumen = resumen;
 		this.nombre = nombre;
 	}
@@ -14,6 +14,11 @@ public class Cuenta implements Indicador {
 	@Override
 	public double valor(Integer periodo) {
 		return this.resumen.calcularElValorDeLaCuenta(this.nombre, periodo);
+	}
+	
+	@Override
+	public String formula() {
+		return nombre;
 	}
 
 }
