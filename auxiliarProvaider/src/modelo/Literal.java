@@ -1,6 +1,6 @@
 package modelo;
 
-public class Literal implements Formula {
+public class Literal implements FormulaDelIndicador {
 	private Double valor;
 
 	public Literal(Double valor) {

@@ -1,11 +1,11 @@
 package modelo;
 
-public abstract class OperacionBinaria implements Formula {
+public abstract class OperacionBinaria implements FormulaDelIndicador {
 	private char operacion;
-	protected Formula izquierdo;
-	protected Formula derecho;
+	protected FormulaDelIndicador izquierdo;
+	protected FormulaDelIndicador derecho;
 	
-	public OperacionBinaria(char operacion, Formula izquierdo, Formula derecho) {
+	public OperacionBinaria(char operacion, FormulaDelIndicador izquierdo, FormulaDelIndicador derecho) {
 		this.operacion = operacion;
 		this.izquierdo = izquierdo;
 		this.derecho = derecho;

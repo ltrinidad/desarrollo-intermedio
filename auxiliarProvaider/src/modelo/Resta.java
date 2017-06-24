@@ -2,7 +2,7 @@ package modelo;
 
 public class Resta extends OperacionBinaria {
 	
-	public Resta(Formula izquierdo, Formula derecho) {
+	public Resta(FormulaDelIndicador izquierdo, FormulaDelIndicador derecho) {
 		super('-', izquierdo, derecho);
 	}
 

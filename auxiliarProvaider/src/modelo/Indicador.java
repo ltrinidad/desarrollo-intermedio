@@ -1,11 +1,10 @@
 package modelo;
 
-public class Indicador {
-	public String nombre;
-	private Formula formula;
+public class Indicador extends Coeficiente {
+	private FormulaDelIndicador formula;
 	
-	public Indicador(String nombre, Formula formula) {
-		this.nombre = nombre;
+	public Indicador(String nombre, FormulaDelIndicador formula) {
+		super(nombre);
 		this.formula = formula;
 	}
 	
@@ -13,8 +12,8 @@ public class Indicador {
 		return this.formula.valor(periodo);
 	}
 	
-	public String formula() {
-		return this.formula.formula();
+	public String formulaCompleta(){
+		return this.nombre + '=' + this.formula();
 	}
 	
 }

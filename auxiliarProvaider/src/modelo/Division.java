@@ -2,7 +2,7 @@ package modelo;
 
 public class Division extends OperacionBinaria {
 	
-	public Division(Formula izquierdo, Formula derecho) {
+	public Division(FormulaDelIndicador izquierdo, FormulaDelIndicador derecho) {
 		super('/', izquierdo, derecho);
 	}
 

@@ -1,0 +1,83 @@
+options
+{
+  static = false;
+}
+
+PARSER_BEGIN(ParserInds)
+
+package parser;
+import java.io.StringReader;
+import modelo.*;
+import java.io.InputStream;
+
+public class ParserInds
+{
+  	private IndicadorBuilder indicadorBuilder;
+
+	public ParserInds(IndicadorBuilder indicadorBuilder, String formulaCompleta) {
+		this(new StringReader(formulaCompleta));
+		this.indicadorBuilder = indicadorBuilder;
+	}
+	
+	public Indicador parsearFormula() throws ParseException
+  	{
+		this.formulaDelIndicador();
+		
+		return indicadorBuilder.construir();
+	}
+}
+
+PARSER_END(ParserInds)
+
+SKIP :
+{
+ "\r"
+| "\t"
+| "\n"
+}
+
+TOKEN :   
+{
+  < SUMA : "+" >
+| < RESTA : "-" >
+| < PRODUCTO : "*" >
+| < DIVISION : "/" >
+}
+
+
+TOKEN :
+{
+  <COEFICIENTE : (<NUMERO>)* <LETRA> (<LETRA> | <NUMERO>)* >
+| <LETRA : ["a"-"z", "A"-"Z"]>
+| <NUMERO : (["0"-"9"])+ | (["0"-"9"])+"."(["0"-"9"])+>
+}
+
+void formulaDelIndicador() :
+{ Token nombre; }
+{
+  nombre=< COEFICIENTE > { indicadorBuilder.setNombreIndicador(nombre.image); } "=" ladoDerecho()
+}
+
+void ladoDerecho() :
+{
+	String operador;
+	Token literalIzq;
+	Token coefIzq;
+	Token literalDer;
+	Token coefDer;
+}
+{
+	((literalIzq=< NUMERO > { indicadorBuilder.setLadoIzquierdo(new Literal(Double.parseDouble(literalIzq.image))); }
+	| coefIzq=< COEFICIENTE > { indicadorBuilder.crearCoefIzquierdo(coefIzq.image); }) 
+		
+	  (operador=operador() { indicadorBuilder.setOperacion(operador); }
+	  (literalDer=< NUMERO > { indicadorBuilder.setLadoDerecho(new Literal(Double.parseDouble(literalDer.image))); }
+	  | coefDer=< COEFICIENTE > { indicadorBuilder.crearCoefDerecho(coefDer.image); }))*)
+}
+
+String operador() :
+{Token t;}
+{
+  (t=< SUMA > | t=< RESTA > | t=< PRODUCTO > | t=< DIVISION >){ return t.image; }
+}
+

@@ -2,7 +2,7 @@ package modelo;
 
 public class Producto extends OperacionBinaria {
 	
-	public Producto(Formula izquierdo, Formula derecho) {
+	public Producto(FormulaDelIndicador izquierdo, FormulaDelIndicador derecho) {
 		super('*', izquierdo, derecho);		
 	}
 	

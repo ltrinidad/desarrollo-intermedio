@@ -1,6 +1,6 @@
 package modelo;
 
-public interface Formula {
+public interface FormulaDelIndicador {
 	
 	public double valor(Integer periodo);
 

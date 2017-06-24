@@ -2,7 +2,7 @@ package modelo;
 
 public class Suma extends OperacionBinaria {
 	
-	public Suma(Formula izquierdo, Formula derecho) {
+	public Suma(FormulaDelIndicador izquierdo, FormulaDelIndicador derecho) {
 		super('+', izquierdo, derecho);
 	}
 
@@ -12,5 +12,4 @@ public class Suma extends OperacionBinaria {
 	}
 
 }
-
 

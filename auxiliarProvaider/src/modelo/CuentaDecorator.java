@@ -2,23 +2,18 @@ package modelo;
 
 import model.ResumenDeCuentas;
 
-public class CuentaDecorator implements Formula {
+public class CuentaDecorator extends Coeficiente {
 	private ResumenDeCuentas resumen;
 	private String nombre; 
 	
 	public CuentaDecorator(ResumenDeCuentas resumen, String nombre) {
+		super(nombre);
 		this.resumen = resumen;
-		this.nombre = nombre;
 	}
 
 	@Override
-	public double valor(Integer periodo) {
+	public double valor(Integer periodo) {		
 		return this.resumen.calcularElValorDeLaCuenta(this.nombre, periodo);
 	}
 	
-	@Override
-	public String formula() {
-		return nombre;
-	}
-
 }
