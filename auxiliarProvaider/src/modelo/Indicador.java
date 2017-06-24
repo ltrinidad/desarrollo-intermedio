@@ -13,7 +13,7 @@ public class Indicador extends Coeficiente {
 	}
 	
 	public String formulaCompleta(){
-		return this.nombre + '=' + this.formula();
+		return this.nombre + '=' + this.formula.formula();
 	}
 	
 }
